@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/negativeEditText"
-            android:text="cancellable"/>
+            android:text="cancelable"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/imageCheckBox"

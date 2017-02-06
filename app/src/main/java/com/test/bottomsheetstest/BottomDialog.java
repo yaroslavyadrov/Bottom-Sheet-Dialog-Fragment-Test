@@ -2,11 +2,13 @@ package com.test.bottomsheetstest;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ public class BottomDialog extends BottomSheetDialogFragment {
     public static final String TAG = "BottomDialog";
 
     private String title;
+    private int titleColor;
     private int image;
     private String positiveText;
     private String negativeText;
@@ -63,11 +66,18 @@ public class BottomDialog extends BottomSheetDialogFragment {
                 }
             }
         });
+        if (titleColor != 0) {
+            titleTextView.setTextColor(titleColor);
+        }
         return view;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setTitleColor(int titleColor) {
+        this.titleColor = titleColor;
     }
 
     public void setImage(int image) {
@@ -148,6 +158,16 @@ public class BottomDialog extends BottomSheetDialogFragment {
 
         public Builder negativeClick(ButtonClickListener clickListener) {
             bottomDialog.setNegativeClickListener(clickListener);
+            return this;
+        }
+
+        public Builder titleColorRes(@ColorRes int titleColor) {
+            bottomDialog.setTitleColor(ContextCompat.getColor(context, titleColor));
+            return this;
+        }
+
+        public Builder titleColor(int titleColor) {
+            bottomDialog.setTitleColor(titleColor);
             return this;
         }
 
